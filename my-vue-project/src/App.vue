@@ -1,30 +1,37 @@
-<script setup lang="ts">
+<script   lang="ts">
+import Greeting from './components/Greeting.vue';
 import HelloWorld from './components/HelloWorld.vue'
+const appWho = 'Vue.js'
+export default {
+  components: {
+    HelloWorld
+  },
+  data () {
+    return {
+      appWho: 'Vue.js'
+    }
+  },
+  methods: {
+    setWho(newWho: string) {
+      this.appWho = newWho
+    }
+  }
+}
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <div id="app">
+    <HelloWorld :msg="appWho" />
+    <button @click="setWho('JavaScript')">JavaScript
+      </button>
+    <button @click="setWho('Everyone')">Everyone</button>
+</div>
+<div>
+  <Greeting greeting="Hi" who="Everyone"/>
+</div>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+
+  
 </style>
